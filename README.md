@@ -2,7 +2,7 @@
 
 A lightweight cooperative task scheduler implemented in C for an AVR ATmega32U4 microcontroller.
 
-The project was originally developed as part of the **Software for Embedded Systems** course at Hamburg University of Technology (TUHH) and has been cleaned and documented as a standalone portfolio project.
+The project was originally developed as part of the **Software for Embedded Systems** course at Hamburg University of Technology (TUHH) and later refactored and documented as a standalone portfolio project..
 
 ## Overview
 

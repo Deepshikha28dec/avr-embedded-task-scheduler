@@ -1,53 +1,28 @@
 # AVR Embedded Task Scheduler
 
-A lightweight cooperative task scheduler implemented in C for an AVR ATmega32U4 microcontroller.
+Lightweight cooperative task scheduler implemented in C for an AVR microcontroller.
 
-The project was originally developed as part of the **Software for Embedded Systems** course at Hamburg University of Technology (TUHH) and later refactored and documented as a standalone portfolio project..
+The scheduler uses a periodic timer interrupt as a system time base and executes one-shot and recurring tasks from the main application loop.
 
-## Overview
+## Features
 
-The scheduler uses a single hardware timer with a **1 ms time base** to manage multiple software tasks.
-
-Tasks are executed from the main application loop rather than directly inside the interrupt service routine, keeping interrupt execution short and predictable.
-
-The scheduler supports:
-
-- Periodic tasks
-- One-shot tasks
-- Function-pointer-based task execution
-- Task parameters
+- Cooperative task scheduling
+- Periodic and one-shot tasks
+- Function-pointer based task execution
+- Timer-driven time base
 - Static task allocation
-- Singly linked task management
-- Interrupt-safe scheduler operations
-- Millisecond-resolution timing
+- Linked-list task management
+- Embedded C implementation
 
 ## Architecture
 
-The system follows a simple cooperative scheduling model:
-
 ```text
-             Timer0
-            1 ms tick
-                |
-                v
-       +------------------+
-       | Scheduler Update |
-       |      ISR         |
-       +------------------+
-                |
-                | marks expired tasks
-                v
-       +------------------+
-       |   Task List      |
-       | linked list      |
-       +------------------+
-                |
-                v
-       +------------------+
-       | scheduler_run()  |
-       +------------------+
-                |
-                v
-          Execute Task
-        outside the ISR
-
+Hardware Timer
+     ↓
+System Tick
+     ↓
+Task Scheduler
+     ↓
+Ready Tasks
+     ↓
+Main Superloop

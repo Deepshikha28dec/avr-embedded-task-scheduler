@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# PlatformIO
+.pio/
+.vscode/
+
+# Build output
+*.o
+*.elf
+*.hex
+*.bin
+
+# Temporary files
+*.log
+*~
